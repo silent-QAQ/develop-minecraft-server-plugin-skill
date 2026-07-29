@@ -2,6 +2,8 @@
 
 面向 Minecraft Java 服务端插件开发的 Codex Skill。它将需求分析、版本策略、第三方 API 适配、GUI 配置、测试验证和交付整理成一套可重复的工作流。
 
+完整中文能力说明见 [中文功能总览](INTRODUCTION.zh-CN.md)。该文档位于仓库根目录，不会加入 Skill 的按需上下文。
+
 ## 适用范围
 
 - Paper 1.21 默认开发基线
