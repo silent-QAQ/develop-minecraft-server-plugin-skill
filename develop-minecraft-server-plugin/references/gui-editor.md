@@ -2,9 +2,9 @@
 
 ## Use It Selectively
 
-Offer the bundled editor when a plugin needs an operator-editable GUI, a ready-to-use default menu, or a visual layout that should be reviewed before implementation. Do not require it for plugins without an inventory GUI or for small fixed menus that the user wants implemented directly.
+When a plugin involves a chest/inventory GUI, ask whether the user wants to use the bundled editor before implementing the menu. Do not open it until the user agrees. If declined, continue from written requirements without asking again.
 
-Open `assets/gui-editor/index.html` in a browser. It is a static application and requires no build or development server.
+Provide a clickable absolute-path link to `assets/gui-editor/index.html`. When in-app browser control is available, open the file in that browser so the user can work beside the task. It is a static application and requires no build or development server.
 
 ## Capabilities
 
@@ -20,6 +20,15 @@ Open `assets/gui-editor/index.html` in a browser. It is a static application and
 The editor bundles Minecraft 26.2 textures imported from a local release. Item icons use the generated model map. Blocks prefer `textures/block/{id}.png`, then `textures/block/{id}_side.png`, and finally the first texture referenced by the release model definition. `air` intentionally has no visible texture.
 
 ## AI Handoff
+
+Prefer a browser handoff that requires no manual file upload:
+
+1. Open the editor in the in-app browser and ask the user to reply when the layout is complete.
+2. After the user replies, read `window.MC_GUI_EDITOR_EXPORT("json")` from that same page through browser control.
+3. Parse the returned JSON as the requirements artifact and confirm the title, layout, populated slot count, and any unresolved development notes.
+4. Save the received artifact into the plugin workspace only when it belongs in the project; otherwise keep it as task input.
+
+This is not a background watcher: wait for the user's completion message before reading the page. If browser control or the bridge is unavailable, use the editor's JSON/YAML download or copy action and ask the user to attach or paste that export. Never scan unrelated files in the user's Downloads directory.
 
 Treat the editor export as a requirements artifact, not as executable plugin configuration unless the project adopts the same schema. Convert every slot role and development note into behavior, validation, permissions, dependencies, and acceptance criteria before coding.
 

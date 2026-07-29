@@ -38,7 +38,16 @@ Read [references/workflow-and-planning.md](references/workflow-and-planning.md) 
 
 ## Plan Before Editing
 
-Create a written implementation plan before changing code. Include goals, targets, Folia decision, features, commands, permissions, UI, configuration, storage, integrations, module boundaries, tests, acceptance criteria, risks, and unresolved decisions.
+After inspection, create and present a written implementation plan before changing plugin code. Include goals, baseline target, features, commands, permissions, UI, configuration, storage, integrations, module boundaries, tests, acceptance criteria, risks, and unresolved decisions.
+
+End the initial plan with one concise confirmation gate:
+
+1. Ask whether the user wants to add or correct requirements, constraints, exclusions, commands, permissions, configuration, storage, or acceptance criteria.
+2. Ask whether the user wants optional platform/UI expansion beyond the baseline.
+3. If expansion is accepted, then ask which of these are required: Paper 1.21.6+ Dialog/UI, Folia scheduling, and an independent Spigot/Bukkit 1.12.2 implementation. Explain that each selected target adds implementation and independent runtime verification.
+4. Update the plan with the answers and ask for implementation approval. Do not start plugin-code edits before approval.
+
+Do not repeat a question the user has already answered explicitly. For an existing-project bug fix or a request that explicitly says to proceed without confirmation, still present the short plan but omit redundant gates and follow the user's stated scope.
 
 Keep the plan current while implementing. For a narrow change, use a short plan. For a complex plugin, split independent work into coordinated child tasks and keep integration ownership in the main task. Read [references/subtask-coordination.md](references/subtask-coordination.md) before delegating.
 
@@ -61,7 +70,7 @@ Read [references/platform-and-versions.md](references/platform-and-versions.md) 
 
 Complete one usable path at a time: descriptor and bootstrap, configuration, service/domain logic, command or event entry point, UI/integration, then tests. Register every command, permission, listener, service, task, and dependency consistently. Release tasks, executors, database pools, caches, and hooks during disable.
 
-For GUI or Dialog work, read [references/gui-and-configuration.md](references/gui-and-configuration.md). When a visual layout would improve requirements or operator usability, also read [references/gui-editor.md](references/gui-editor.md) and open the bundled editor. For framework, attribute, economy, permissions, or variables, read [references/dependency-selection.md](references/dependency-selection.md) and [references/plugin-api-handbook.md](references/plugin-api-handbook.md). For AttributePlus implementation details, search the bundled snapshot through [references/attributeplus-offline-docs.md](references/attributeplus-offline-docs.md) before browsing. For DragonCore, GermEngine, PaiUI, or ArcartX, use [references/ui-model-engines.md](references/ui-model-engines.md) only as an on-demand documentation link index; do not load or reproduce the engines' full documentation unless the requested integration needs it.
+For GUI or Dialog work, read [references/gui-and-configuration.md](references/gui-and-configuration.md). When the plugin involves a chest/inventory GUI, ask whether the user wants to use the bundled visual editor before implementation. If accepted, provide a clickable link to `assets/gui-editor/index.html` and open it in the in-app browser when browser control is available. Follow [references/gui-editor.md](references/gui-editor.md) to receive the completed design without manual upload. If declined, implement from the written requirements. For framework, attribute, economy, permissions, or variables, read [references/dependency-selection.md](references/dependency-selection.md) and [references/plugin-api-handbook.md](references/plugin-api-handbook.md). For AttributePlus implementation details, search the bundled snapshot through [references/attributeplus-offline-docs.md](references/attributeplus-offline-docs.md) before browsing. For DragonCore, GermEngine, PaiUI, or ArcartX, use [references/ui-model-engines.md](references/ui-model-engines.md) only as an on-demand documentation link index; do not load or reproduce the engines' full documentation unless the requested integration needs it.
 
 ## Enforce Runtime Safety
 

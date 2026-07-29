@@ -4,6 +4,7 @@
 
 - Requirement contract
 - Plan template
+- Confirmation gate
 - Complexity classification
 - Implementation order
 - Change control
@@ -48,6 +49,18 @@ Use this structure and keep it current:
 ```
 
 Each implementation step must have a verifiable completion condition. Mark steps as work progresses rather than closing all steps at the end.
+
+## Confirmation Gate
+
+Use this sequence after presenting the initial plan and before editing plugin code:
+
+1. Ask whether requirements or constraints should be added or corrected.
+2. Ask whether the baseline implementation should be expanded.
+3. Only when expansion is accepted, ask the user to select any required extensions: Paper 1.21.6+ Dialog/UI, Folia scheduling, or an independent Spigot/Bukkit 1.12.2 compatibility implementation.
+4. Incorporate the answers into the platform matrix, architecture, implementation steps, tests, risks, and acceptance criteria.
+5. Ask for implementation approval, then proceed.
+
+Keep the first confirmation concise. Do not ask three separate platform questions before the user has chosen to expand. Do not ask again for facts already explicit in the request or repository. A narrow fix may use a short plan and a single approval question; an explicit instruction to proceed without confirmation overrides redundant gates.
 
 ## Complexity Classification
 

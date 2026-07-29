@@ -363,6 +363,12 @@
     return yaml;
   }
 
+  // Read-only bridge used by Codex browser control after the user finishes editing.
+  window.MC_GUI_EDITOR_EXPORT = format => {
+    const selectedFormat = ["yaml", "json", "prompt"].includes(format) ? format : "json";
+    return outputFor(selectedFormat);
+  };
+
   function updateExport() { elements.exportOutput.value = outputFor(exportFormat); }
 
   function showToast(message) {
