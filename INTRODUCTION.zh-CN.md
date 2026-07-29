@@ -87,6 +87,8 @@ Skill 提供以下引擎的官方文档入口：
 
 当插件涉及箱子 GUI 时，Skill 会先询问是否使用编辑器。用户同意后可在 Codex 内置浏览器中直接打开；设计完成并回复确认后，Codex 可从页面读取结构化导出，无需用户手动寻找和上传下载文件。浏览器控制不可用时仍可使用下载或复制方式交接。
 
+仓库还内置独立的 Paper Dialog UI 编辑器，面向本地 Paper 26.2 Experimental API。它覆盖通知、确认、多动作、Dialog 列表和服务器链接五种类型，以及文本/物品正文、四种输入控件、完整动作按钮和可选退出按钮。编辑器提供实时预览、物品库、撤销/重做、类型约束校验，以及中文键 YAML、JSON 和 AI 提示词导出；AI 也可通过页面桥接直接读取设计与校验结果。该导出是开发需求制品，实际 Java 代码仍需查询目标版本 API，且所有客户端响应必须在服务端重新验证。
+
 ## 离线 API 资料
 
 仓库内置可全文检索的 API 源码快照：
@@ -165,6 +167,7 @@ develop-minecraft-server-plugin/
 ├─ scripts/                 # 检查、查询和资源维护脚本
 ├─ assets/api-cache/        # 离线 Paper/Bukkit API 快照
 ├─ assets/gui-editor/       # 可视化 GUI 编辑器
+├─ assets/dialog-editor/    # 可视化 Dialog UI 编辑器
 └─ agents/                  # Skill 展示元数据
 ```
 

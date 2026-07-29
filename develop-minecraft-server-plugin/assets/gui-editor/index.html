@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Minecraft GUI 配置编辑器</title>
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
   <header class="app-header">
@@ -49,6 +49,7 @@
       </div>
 
       <div class="stage-wrap">
+        <div id="previewIndicator" class="preview-indicator hidden"><span></span>预览运行中</div>
         <div class="stage" id="stage">
           <div class="minecraft-window">
             <div class="window-label" id="containerLabel">大型箱子 · 54 槽</div>
@@ -61,6 +62,24 @@
           </div>
         </div>
       </div>
+
+      <section id="dynamicToolbar" class="dynamic-toolbar" aria-label="动态槽工具栏">
+        <div class="dynamic-toolbar-head">
+          <button class="icon-button toolbar-collapse" id="toolbarCollapseBtn" title="收起动态工具栏" aria-label="收起动态工具栏"><i data-lucide="chevron-down"></i></button>
+          <div class="toolbar-title"><i data-lucide="route"></i><strong>动态槽</strong><span id="multiSelectStatus">未选择槽位</span></div>
+          <div class="toolbar-actions">
+            <button class="secondary-button" id="clearSelectionBtn" disabled><i data-lucide="x"></i>取消选择</button>
+            <button class="secondary-button" id="createPathBtn" disabled><i data-lucide="move-right"></i>轨迹槽</button>
+            <button class="secondary-button" id="createRandomBtn" disabled><i data-lucide="shuffle"></i>随机槽</button>
+            <button class="secondary-button" id="setContainerBtn" disabled><i data-lucide="package-open"></i>容器槽</button>
+            <button class="secondary-button hidden" id="simulateConditionBtn" disabled><i data-lucide="zap"></i>模拟条件</button>
+            <button class="primary-button preview-button" id="previewBtn"><i data-lucide="play"></i><span>预览</span></button>
+          </div>
+        </div>
+        <div class="dynamic-toolbar-body">
+          <div id="dynamicGroupList" class="dynamic-group-list" aria-live="polite"></div>
+        </div>
+      </section>
 
       <div class="canvas-status">
         <span><i data-lucide="mouse-pointer-2"></i><b id="filledCount">0</b> 个已配置槽位</span>
@@ -79,6 +98,7 @@
         <div class="selected-item-head">
           <div class="item-preview" id="itemPreview"></div>
           <div><strong id="selectedMaterial">-</strong><span id="selectedSlot">槽位 0</span></div>
+          <button type="button" class="icon-button" id="editStatesBtn" title="编辑动态状态" aria-label="编辑动态状态"><i data-lucide="layers-3"></i></button>
           <button type="button" class="icon-button danger" id="removeItemBtn" title="移除物品" aria-label="移除物品"><i data-lucide="x"></i></button>
         </div>
 
@@ -113,13 +133,108 @@
       <button class="primary-button" id="copyBtn"><i data-lucide="copy"></i>复制</button>
     </div>
     <textarea id="exportOutput" spellcheck="false" aria-label="导出内容"></textarea>
-    <p class="dialog-note">导出内容包含布局、槽位编号、物品属性和开发备注，可直接附在插件开发需求中。</p>
+    <p class="dialog-note">导出内容包含布局、动态状态、触发条件、动态槽和容器槽规则。</p>
   </dialog>
+
+  <dialog id="stateDialog" class="editor-dialog state-dialog">
+    <div class="dialog-head">
+      <div><span class="eyebrow">SLOT STATES</span><h2 id="stateDialogTitle">动态状态</h2></div>
+      <button class="icon-button" data-close-dialog="stateDialog" aria-label="关闭"><i data-lucide="x"></i></button>
+    </div>
+    <div class="state-editor-layout">
+      <aside class="state-list-pane">
+        <div id="stateList" class="state-list"></div>
+        <button class="secondary-button full-button" id="addStateBtn" type="button"><i data-lucide="plus"></i>添加状态</button>
+      </aside>
+      <form id="stateForm" class="dialog-form">
+        <p class="dialog-error hidden" data-dialog-error role="alert" aria-live="assertive"></p>
+        <div class="form-section state-item-fields">
+          <div class="form-section-head"><strong>显示物品</strong><span id="stateIndexLabel">状态 0</span></div>
+          <label>物品 ID<input name="material" list="materialOptions" placeholder="apple" autocomplete="off" required></label>
+          <div class="field-row equal"><label>数量<input name="amount" type="number" min="1" max="99" value="1"></label><label>物品名称<input name="name" placeholder="&6金苹果"></label></div>
+          <label>Lore（每行一条）<textarea name="lore" rows="3" placeholder="&7状态说明"></textarea></label>
+          <label class="toggle"><input name="glint" type="checkbox"><span></span>显示附魔光效</label>
+        </div>
+        <div id="stateTriggerSection" class="form-section">
+          <div class="form-section-head"><strong>进入条件</strong></div>
+          <div class="condition-editor" data-condition-editor>
+            <label>触发条件<select data-condition-field="type"></select></label>
+            <div class="condition-params" data-condition-params></div>
+          </div>
+          <div class="tick-range">
+            <label>最短延迟<input name="delayMin" type="number" min="0" value="0"></label>
+            <span>至</span>
+            <label>最长延迟<input name="delayMax" type="number" min="0" value="0"></label>
+            <b>tick</b>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="dialog-footer">
+      <button class="secondary-button danger-text" id="deleteStateBtn" type="button" disabled><i data-lucide="trash-2"></i>删除状态</button>
+      <span></span>
+      <button class="secondary-button" data-close-dialog="stateDialog" type="button">取消</button>
+      <button class="primary-button" id="saveStateBtn" type="button"><i data-lucide="check"></i>保存状态</button>
+    </div>
+  </dialog>
+
+  <dialog id="dynamicDialog" class="editor-dialog dynamic-dialog">
+    <div class="dialog-head">
+      <div><span class="eyebrow">DYNAMIC SLOTS</span><h2 id="dynamicDialogTitle">动态轨迹槽</h2></div>
+      <button class="icon-button" data-close-dialog="dynamicDialog" aria-label="关闭"><i data-lucide="x"></i></button>
+    </div>
+    <form id="dynamicForm" class="dialog-form dynamic-form">
+      <p class="dialog-error hidden" data-dialog-error role="alert" aria-live="assertive"></p>
+      <label>名称<input name="name" placeholder="主菜单指示轨迹"></label>
+      <div class="form-section path-section">
+        <div class="form-section-head"><strong>槽位顺序</strong><span id="dynamicSlotCount">0 个槽位</span></div>
+        <div id="dynamicSlotPath" class="slot-path"></div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-head"><strong>启动条件</strong></div>
+        <div class="condition-editor" data-condition-editor>
+          <label>触发条件<select data-condition-field="type"></select></label>
+          <div class="condition-params" data-condition-params></div>
+        </div>
+        <div class="tick-range">
+          <label>启动延迟<input name="delayMin" type="number" min="0" value="0"></label>
+          <span>至</span>
+          <label>最长延迟<input name="delayMax" type="number" min="0" value="0"></label>
+          <b>tick</b>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-head"><strong>移动节奏</strong></div>
+        <div class="tick-range">
+          <label>最短间隔<input name="intervalMin" type="number" min="1" value="10"></label>
+          <span>至</span>
+          <label>最长间隔<input name="intervalMax" type="number" min="1" value="10"></label>
+          <b>tick</b>
+        </div>
+        <label class="toggle"><input name="loop" type="checkbox" checked><span></span>循环播放</label>
+      </div>
+    </form>
+    <div class="dialog-footer">
+      <button class="secondary-button danger-text" id="deleteDynamicBtn" type="button"><i data-lucide="trash-2"></i>删除动态槽</button>
+      <span></span>
+      <button class="secondary-button" data-close-dialog="dynamicDialog" type="button">取消</button>
+      <button class="primary-button" id="saveDynamicBtn" type="button"><i data-lucide="check"></i>保存动态槽</button>
+    </div>
+  </dialog>
+
+  <div id="slotContextMenu" class="context-menu hidden" role="menu">
+    <button type="button" data-context-action="states" role="menuitem"><i data-lucide="layers-3"></i><span>编辑动态状态</span></button>
+    <button type="button" data-context-action="container" role="menuitem"><i data-lucide="package-open"></i><span>设为容器槽</span></button>
+    <div class="context-separator"></div>
+    <button type="button" data-context-action="remove" class="danger-text" role="menuitem"><i data-lucide="trash-2"></i><span>移除物品</span></button>
+  </div>
+
+  <datalist id="materialOptions"></datalist>
 
   <div id="toast" class="toast" role="status"></div>
   <script src="items.js?v=1"></script>
   <script src="icon-map.js?v=1"></script>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <script src="app.js?v=3"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
 interface:
-  display_name: "Minecraft ²å¼şÈ«×Ô¶¯¿ª·¢"
-  short_description: "¹æ»®¡¢¿ª·¢²¢ÑéÖ¤ Paper¡¢Folia ¶à°æ±¾²å¼ş"
-  default_prompt: "Ê¹ÓÃ $develop-minecraft-server-plugin ¹æ»®¡¢¿ª·¢²¢ÍêÕûÑéÖ¤Ò»¸ö Minecraft ·şÎñ¶Ë²å¼ş¡£"
+  display_name: "Minecraft æ’ä»¶å…¨è‡ªåŠ¨å¼€å‘"
+  short_description: "è§„åˆ’ã€å¼€å‘å¹¶éªŒè¯ Paperã€Folia å¤šç‰ˆæœ¬æ’ä»¶"
+  default_prompt: "ä½¿ç”¨ $develop-minecraft-server-plugin è§„åˆ’ã€å¼€å‘å¹¶å®Œæ•´éªŒè¯ä¸€ä¸ª Minecraft æœåŠ¡ç«¯æ’ä»¶ã€‚"

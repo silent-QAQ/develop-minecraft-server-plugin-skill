@@ -1,4 +1,4 @@
-# Visual GUI Editor
+# Visual Inventory GUI Editor
 
 ## Use It Selectively
 

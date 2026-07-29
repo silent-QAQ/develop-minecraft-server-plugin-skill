@@ -1,8 +1,15 @@
 # develop-minecraft-server-plugin-skill
+广告区：
+开发者的qq群：1078284723
+广告招租
+广告招租
+广告招租
+
 
 面向 Minecraft Java 服务端插件开发的 Codex Skill。它将需求分析、版本策略、第三方 API 适配、GUI 配置、测试验证和交付整理成一套可重复的工作流。
 
 完整中文能力说明见 [中文功能总览](INTRODUCTION.zh-CN.md)。该文档位于仓库根目录，不会加入 Skill 的按需上下文。
+
 
 ## 适用范围
 
@@ -48,7 +55,7 @@ Skill 默认按业务语义选择第三方 API：
 
 Skill 会先检查项目和本地 API 缓存，再制定版本、依赖、模块、测试和交付计划。
 
-计划展示后会先确认是否补充条件、是否需要扩展；只有同意扩展时才继续选择 Dialog/UI、Folia 或独立 1.12.2 实现。涉及箱子 GUI 时可选择打开内置可视化编辑器，完成后由 Codex 从页面直接读取导出数据，无需手动上传文件。
+计划展示后会先确认是否补充条件、是否需要扩展；只有同意扩展时才继续选择 Dialog/UI、Folia 或独立 1.12.2 实现。涉及箱子 GUI 时可选择打开内置可视化编辑器；目标 Paper 支持 Dialog API 时，也可使用独立的 Dialog UI 编辑器。两种工具都能由 Codex 从页面直接读取导出数据，无需手动上传文件。
 
 ## 文档导航
 
@@ -61,6 +68,8 @@ Skill 会先检查项目和本地 API 缓存，再制定版本、依赖、模块
 - `references/testing-and-delivery.md`：验证、运行和交付要求
 - `assets/api-cache/`：Paper/Bukkit 离线 API 源码快照
 - `assets/api-cache/attributeplus-docs/`：AttributePlus 官方文档正文快照
+- `assets/gui-editor/`：箱子与背包 GUI 可视化编辑器
+- `assets/dialog-editor/`：Paper Dialog UI 可视化编辑器
 
 ## 许可证
 

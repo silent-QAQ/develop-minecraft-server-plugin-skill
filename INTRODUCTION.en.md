@@ -36,6 +36,10 @@ Operator-facing configuration prefers UTF-8 YAML. Options must either use clear 
 
 Inventory GUIs use a validated model based on character layouts, semantic slots, display conditions, click actions, placeholders, and version-aware materials. For 1.21.6+ Dialog UI, the Skill reuses conditions, actions, and domain services while keeping the renderer separate from inventory implementations.
 
+The bundled static GUI editor includes the complete Minecraft 26.2 item/block texture set. Developers can design a 6x9 or 3x9 chest together with the player inventory, drag items into slots, edit names, roles, Lore, enchantments, attributes, and NBT, then export YAML, JSON, or a ready-to-submit AI prompt. A Common category includes frequent materials and supports right-click favorites.
+
+A separate visual Dialog editor targets the bundled Paper 26.2 Experimental API. It models all five Dialog types, both body types, all four input controls, complete action buttons, and supported exit actions. It provides a live preview, the local item library, undo/redo, type-aware validation, and Chinese-keyed YAML, JSON, or AI-prompt exports. Codex can read the design and validation result directly from the page. The export is a requirements artifact: generated Java must still be checked against the exact target API, and every client response must be validated again on the server.
+
 ## Offline API Resources
 
 The Skill includes searchable API source snapshots for:

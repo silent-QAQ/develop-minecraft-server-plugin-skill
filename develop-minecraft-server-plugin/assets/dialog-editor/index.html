@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minecraft Dialog UI 编辑器</title>
+  <link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand"><div class="brand-mark"><span></span><span></span></div><div><strong>Dialog 配置台</strong><small>Paper 26.2 · Experimental API</small></div></div>
+    <div class="header-actions">
+      <span id="saveState" class="save-state">已保存</span>
+      <button class="icon-button" id="undoBtn" title="撤销" aria-label="撤销" disabled><i data-lucide="undo-2"></i></button>
+      <button class="icon-button" id="redoBtn" title="重做" aria-label="重做" disabled><i data-lucide="redo-2"></i></button>
+      <button class="secondary-button" id="resetBtn" title="重置" aria-label="重置"><i data-lucide="rotate-ccw"></i><span>重置</span></button>
+      <button class="primary-button" id="exportBtn" title="导出给 AI" aria-label="导出给 AI"><i data-lucide="file-down"></i><span>导出给 AI</span></button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="structure-panel">
+      <div class="panel-title"><span class="eyebrow">STRUCTURE</span><h1>Dialog 结构</h1></div>
+      <button class="base-entry active" data-select-group="base"><i data-lucide="settings-2"></i><span><strong>基础设置</strong><small id="typeSummary">通知型</small></span><i data-lucide="chevron-right"></i></button>
+
+      <section class="tree-section">
+        <div class="section-head"><span>正文</span><div class="mini-actions"><button data-add="plain_message" title="添加文本正文" aria-label="添加文本正文"><i data-lucide="text"></i></button><button data-add="item" title="添加物品正文" aria-label="添加物品正文"><i data-lucide="diamond"></i></button></div></div>
+        <div id="bodyList" class="tree-list"></div>
+      </section>
+
+      <section class="tree-section">
+        <div class="section-head"><span>输入控件</span><select id="inputKind" aria-label="输入控件类型"><option value="text">文本</option><option value="boolean">开关</option><option value="number_range">数值范围</option><option value="single_option">单选项</option></select><button class="add-icon" id="addInputBtn" title="添加输入" aria-label="添加输入"><i data-lucide="plus"></i></button></div>
+        <div id="inputList" class="tree-list"></div>
+      </section>
+
+      <section class="tree-section actions-section">
+        <div class="section-head"><span id="actionSectionLabel">动作按钮</span><button class="add-icon" id="addActionBtn" title="添加动作按钮" aria-label="添加动作按钮"><i data-lucide="plus"></i></button></div>
+        <div id="actionList" class="tree-list"></div>
+      </section>
+      <div class="structure-note"><i data-lucide="flask-conical"></i><span>导出固定目标 Paper 26.2。输入响应仍需服务端验证。</span></div>
+    </aside>
+
+    <section class="preview-panel">
+      <div class="preview-toolbar">
+        <div><span class="eyebrow">LIVE PREVIEW</span><strong id="previewType">Notice Dialog</strong></div>
+        <div class="preview-state"><span class="status-dot"></span><span id="validationState">配置有效</span></div>
+      </div>
+      <div class="game-stage">
+        <div class="world-scene" aria-hidden="true"><div class="sky"></div><div class="horizon"></div><div class="ground"></div></div>
+        <div id="dialogPreview" class="mc-dialog"></div>
+      </div>
+      <div class="preview-footer"><span><i data-lucide="mouse-pointer-2"></i>预览用于布局确认，不执行服务端动作</span><span id="elementCount">0 个元素</span></div>
+    </section>
+
+    <aside class="inspector-panel">
+      <div class="panel-title"><span class="eyebrow">INSPECTOR</span><h2 id="inspectorTitle">基础设置</h2></div>
+      <div id="inspectorContent" class="inspector-content"></div>
+    </aside>
+  </main>
+
+  <dialog id="itemPicker" class="picker-dialog" aria-labelledby="itemPickerTitle">
+    <div class="dialog-head"><div><span class="eyebrow">ITEM BODY</span><h2 id="itemPickerTitle">选择展示物品</h2><small id="itemCount" class="dialog-count">0 项</small></div><button class="icon-button" id="closePickerBtn" aria-label="关闭"><i data-lucide="x"></i></button></div>
+    <label class="search-box"><i data-lucide="search"></i><input id="itemSearch" type="search" placeholder="搜索物品 ID" autocomplete="off"></label>
+    <div id="pickerGrid" class="picker-grid"></div>
+  </dialog>
+
+  <dialog id="exportDialog" class="export-dialog" aria-labelledby="exportDialogTitle">
+    <div class="dialog-head"><div><span class="eyebrow">EXPORT</span><h2 id="exportDialogTitle">提交给 AI</h2></div><button class="icon-button" id="closeExportBtn" aria-label="关闭"><i data-lucide="x"></i></button></div>
+    <div class="export-options"><div class="segmented" id="exportFormat" role="group" aria-label="导出格式"><button data-format="yaml" class="active" aria-pressed="true">YAML 配置</button><button data-format="json" aria-pressed="false">JSON 数据</button><button data-format="prompt" aria-pressed="false">AI 提示词</button></div><button class="secondary-button" id="downloadBtn"><i data-lucide="download"></i>下载</button><button class="primary-button" id="copyBtn"><i data-lucide="copy"></i>复制</button></div>
+    <textarea id="exportOutput" spellcheck="false" aria-label="导出内容"></textarea>
+    <p class="dialog-note" id="exportNote">AI 应根据目标 Paper API 生成并验证实际 Java 代码。</p>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="../gui-editor/items.js?v=1"></script>
+  <script src="../gui-editor/icon-map.js?v=1"></script>
+  <script src="lucide.min.js?v=0.468.0"></script>
+  <script src="app.js?v=2"></script>
+</body>
+</html>
