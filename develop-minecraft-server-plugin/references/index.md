@@ -10,6 +10,7 @@ Use this index to load only the material needed for the current task.
 | Decide whether to use TabooLib | `dependency-selection.md` |
 | Add attributes or economy | `dependency-selection.md` |
 | Implement AttributePlus, Vault, VaultUnlock, PlayerPoints, native values, LuckPerms, or PlaceholderAPI | `plugin-api-handbook.md`; also read `dependency-selection.md` |
+| Look up AttributePlus configuration, reading rules, scripts, components, or API | `attributeplus-offline-docs.md`; search `assets/api-cache/attributeplus-docs/pages/` |
 | Integrate DragonCore, GermEngine, PaiUI, or ArcartX | Use `ui-model-engines.md` as an on-demand link index; also read `platform-and-versions.md` |
 | Build inventory GUI, Dialog, or YAML configuration | `gui-and-configuration.md` |
 | Visually design a configurable inventory GUI | `gui-editor.md`; open `assets/gui-editor/index.html` |

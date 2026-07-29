@@ -1,0 +1,243 @@
+{
+  "name": "AttributePlus documentation",
+  "origin": "https://plugin.hhhhhy.kim/docs/attributeplus",
+  "sitemap": "https://plugin.hhhhhy.kim/sitemap.xml",
+  "snapshot_date": "2026-07-29",
+  "format": "Article HTML converted to Markdown; site chrome and scripts omitted",
+  "page_count": 42,
+  "unavailable_count": 5,
+  "pages": [
+    {
+      "title": "AttributePlus",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/",
+      "file": "pages/index.md"
+    },
+    {
+      "title": "插件相关",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/cha-jian-pei-zhi/",
+      "file": "pages/cha-jian-pei-zhi.md"
+    },
+    {
+      "title": "高版本物品问题",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/cha-jian-pei-zhi/gao-ban-ben-wu-pin-wen-ti",
+      "file": "pages/cha-jian-pei-zhi__gao-ban-ben-wu-pin-wen-ti.md"
+    },
+    {
+      "title": "配置",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/cha-jian-pei-zhi/pei-zhi/",
+      "file": "pages/cha-jian-pei-zhi__pei-zhi.md"
+    },
+    {
+      "title": "语言",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/cha-jian-pei-zhi/yu-yan",
+      "file": "pages/cha-jian-pei-zhi__yu-yan.md"
+    },
+    {
+      "title": "读取相关",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/du-qu-xiang-guan/",
+      "file": "pages/du-qu-xiang-guan.md"
+    },
+    {
+      "title": "属性百分比读取格式",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/du-qu-xiang-guan/bai-fen-bi-shu-xing-du-qu-ge-shi",
+      "file": "pages/du-qu-xiang-guan__bai-fen-bi-shu-xing-du-qu-ge-shi.md"
+    },
+    {
+      "title": "过滤符相关",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/du-qu-xiang-guan/guo-lv-fu-xiang-guan",
+      "file": "pages/du-qu-xiang-guan__guo-lv-fu-xiang-guan.md"
+    },
+    {
+      "title": "NBT属性加载",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/du-qu-xiang-guan/nbt-shu-xing-jia-zai",
+      "file": "pages/du-qu-xiang-guan__nbt-shu-xing-jia-zai.md"
+    },
+    {
+      "title": "旧读取格式相关 (<=3.3.0.6)",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/du-qu-xiang-guan/shu-xing-du-qu-ge-shi",
+      "file": "pages/du-qu-xiang-guan__shu-xing-du-qu-ge-shi.md"
+    },
+    {
+      "title": "属性内嵌条件格式",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/du-qu-xiang-guan/shu-xing-du-qu-tiao-jian",
+      "file": "pages/du-qu-xiang-guan__shu-xing-du-qu-tiao-jian.md"
+    },
+    {
+      "title": "装备条件标签",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/du-qu-xiang-guan/zhuang-bei-tiao-jian-biao-qian",
+      "file": "pages/du-qu-xiang-guan__zhuang-bei-tiao-jian-biao-qian.md"
+    },
+    {
+      "title": "自定义条件标签",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/du-qu-xiang-guan/zi-ding-yi-tiao-jian-biao-qian",
+      "file": "pages/du-qu-xiang-guan__zi-ding-yi-tiao-jian-biao-qian.md"
+    },
+    {
+      "title": "更新记录",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/geng-xin-ji-lu",
+      "file": "pages/geng-xin-ji-lu.md"
+    },
+    {
+      "title": "机制相关",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/ji-zhi-xiang-guan/",
+      "file": "pages/ji-zhi-xiang-guan.md"
+    },
+    {
+      "title": "盾牌机制",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/ji-zhi-xiang-guan/dun-pai-ji-zhi",
+      "file": "pages/ji-zhi-xiang-guan__dun-pai-ji-zhi.md"
+    },
+    {
+      "title": "弓箭机制",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/ji-zhi-xiang-guan/gong-jian-ji-zhi",
+      "file": "pages/ji-zhi-xiang-guan__gong-jian-ji-zhi.md"
+    },
+    {
+      "title": "蓄力机制",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/ji-zhi-xiang-guan/xu-li-ji-zhi",
+      "file": "pages/ji-zhi-xiang-guan__xu-li-ji-zhi.md"
+    },
+    {
+      "title": "召唤机制",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/ji-zhi-xiang-guan/zhao-huan-ji-zhi",
+      "file": "pages/ji-zhi-xiang-guan__zhao-huan-ji-zhi.md"
+    },
+    {
+      "title": "开发文档",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/",
+      "file": "pages/kai-fa-wen-dang.md"
+    },
+    {
+      "title": "API",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/api",
+      "file": "pages/kai-fa-wen-dang__api.md"
+    },
+    {
+      "title": "Counter 计数器",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/api-1",
+      "file": "pages/kai-fa-wen-dang__api-1.md"
+    },
+    {
+      "title": "AttributeComponent",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/attributecomponent/",
+      "file": "pages/kai-fa-wen-dang__attributecomponent.md"
+    },
+    {
+      "title": "AttributeType",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/attributecomponent/attributetype",
+      "file": "pages/kai-fa-wen-dang__attributecomponent__attributetype.md"
+    },
+    {
+      "title": "Example",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/attributecomponent/shou-ba-shou-jiao-ni-xie-shu-xing",
+      "file": "pages/kai-fa-wen-dang__attributecomponent__shou-ba-shou-jiao-ni-xie-shu-xing.md"
+    },
+    {
+      "title": "AttributeName",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/attributecomponent/shu-xing-ming-shuo-ming",
+      "file": "pages/kai-fa-wen-dang__attributecomponent__shu-xing-ming-shuo-ming.md"
+    },
+    {
+      "title": "CustomTriggerComponent",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/descriptionlinecondition",
+      "file": "pages/kai-fa-wen-dang__descriptionlinecondition.md"
+    },
+    {
+      "title": "EmbeddedCondition",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/descriptionlinecondition-1",
+      "file": "pages/kai-fa-wen-dang__descriptionlinecondition-1.md"
+    },
+    {
+      "title": "ReadComponent",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/readcomponent/",
+      "file": "pages/kai-fa-wen-dang__readcomponent.md"
+    },
+    {
+      "title": "教学",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/kai-fa-wen-dang/readcomponent/shou-ba-shou-jiao-ni-xie-xin-de-du-qu-fang-shi",
+      "file": "pages/kai-fa-wen-dang__readcomponent__shou-ba-shou-jiao-ni-xie-xin-de-du-qu-fang-shi.md"
+    },
+    {
+      "title": "属性脚本",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-jiao-ben/",
+      "file": "pages/shu-xing-jiao-ben.md"
+    },
+    {
+      "title": "常见问题",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-jiao-ben/chang-jian-wen-ti",
+      "file": "pages/shu-xing-jiao-ben__chang-jian-wen-ti.md"
+    },
+    {
+      "title": "脚本方法",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-jiao-ben/jiao-ben-api",
+      "file": "pages/shu-xing-jiao-ben__jiao-ben-api.md"
+    },
+    {
+      "title": "脚本教学",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-jiao-ben/shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben/",
+      "file": "pages/shu-xing-jiao-ben__shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben.md"
+    },
+    {
+      "title": "RUNTIME 类型",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-jiao-ben/shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben/runtime-lei-xing",
+      "file": "pages/shu-xing-jiao-ben__shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben__runtime-lei-xing.md"
+    },
+    {
+      "title": "KILLER 类型",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-jiao-ben/shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben/runtime-lei-xing-1",
+      "file": "pages/shu-xing-jiao-ben__shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben__runtime-lei-xing-1.md"
+    },
+    {
+      "title": "UPDATE 类型",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-jiao-ben/shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben/update-lei-xing",
+      "file": "pages/shu-xing-jiao-ben__shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben__update-lei-xing.md"
+    },
+    {
+      "title": "CUSTOM 类型",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-jiao-ben/shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben/update-lei-xing-1",
+      "file": "pages/shu-xing-jiao-ben__shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben__update-lei-xing-1.md"
+    },
+    {
+      "title": "属性类型",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-jiao-ben/shu-xing-lei-xing",
+      "file": "pages/shu-xing-jiao-ben__shu-xing-lei-xing.md"
+    },
+    {
+      "title": "属性相关",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-xiang-guan/",
+      "file": "pages/shu-xing-xiang-guan.md"
+    },
+    {
+      "title": "MythicMobs 属性相关",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-xiang-guan/mythicmobs-shu-xing-xiang-guan",
+      "file": "pages/shu-xing-xiang-guan__mythicmobs-shu-xing-xiang-guan.md"
+    },
+    {
+      "title": "优先级 / 战斗力 / 公式 / 消息",
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-xiang-guan/you-xian-ji",
+      "file": "pages/shu-xing-xiang-guan__you-xian-ji.md"
+    }
+  ],
+  "unavailable_sitemap_entries": [
+    {
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/cha-jian-pei-zhi/pei-zhi/attribute.yml",
+      "status": 404
+    },
+    {
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/cha-jian-pei-zhi/pei-zhi/script.yml",
+      "status": 404
+    },
+    {
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/cha-jian-pei-zhi/pei-zhi/stats.yml",
+      "status": 404
+    },
+    {
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/du-qu-xiang-guan/xin-du-qu-ge-shi-xiang-guan-3.3.0.7",
+      "status": 404
+    },
+    {
+      "source": "https://plugin.hhhhhy.kim/docs/attributeplus/shu-xing-jiao-ben/shou-ba-shou-jiao-ni-xie-shu-xing-jiao-ben/attributeapi.runentitytask",
+      "status": 404
+    }
+  ]
+}

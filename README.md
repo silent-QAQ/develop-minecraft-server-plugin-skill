@@ -53,10 +53,12 @@ Skill 会先检查项目和本地 API 缓存，再制定版本、依赖、模块
 - `SKILL.md`：主工作流与触发规则
 - `references/index.md`：按任务选择参考文档
 - `references/plugin-api-handbook.md`：第三方插件 API 速查与适配边界
+- `references/attributeplus-offline-docs.md`：AttributePlus 离线文档检索说明
 - `references/ui-model-engines.md`：第三方 UI/模型引擎官方链接索引
 - `references/platform-and-versions.md`：Paper、Folia、1.12.2 和跨版本策略
 - `references/testing-and-delivery.md`：验证、运行和交付要求
 - `assets/api-cache/`：Paper/Bukkit 离线 API 源码快照
+- `assets/api-cache/attributeplus-docs/`：AttributePlus 官方文档正文快照
 
 ## 许可证
 

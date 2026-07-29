@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use bundled source snapshots to look up classes, signatures, annotations, scheduler APIs, Dialog APIs, and `Material` entries without repeated network access. The cache contains source snapshots for Paper 26.2, Paper 1.21.1, Paper 1.21.6, and Spigot/Bukkit 1.12.2.
+Use bundled source and documentation snapshots to look up classes, signatures, annotations, scheduler APIs, Dialog APIs, `Material` entries, and AttributePlus documentation without repeated network access. The cache contains source snapshots for Paper 26.2, Paper 1.21.1, Paper 1.21.6, and Spigot/Bukkit 1.12.2, plus a Markdown snapshot of the AttributePlus documentation.
 
 Minecraft 26.2 is the current version fact supplied for this skill. Do not use network access merely to challenge or verify that fact. The default plugin compatibility baseline remains Paper 1.21 unless the user requests 26.2 or another target.
 
@@ -21,6 +21,8 @@ Use `-ListTargets` to show installed snapshots. Search a specific target wheneve
 ## Cache Layout
 
 Each target under `assets/api-cache/` contains extracted API sources and `snapshot.json` with origin, coordinates, resolved version, and fetch time. `Material.java` is the primary offline vanilla block/item identifier library exposed by these server APIs.
+
+`assets/api-cache/attributeplus-docs/` is documentation rather than an API source JAR. Read `references/attributeplus-offline-docs.md` for search commands, snapshot scope, and version-authority rules.
 
 The API enum is not proof that an entry is usable as an inventory item. Inspect `isItem`, legacy status, block/item semantics, and target-specific metadata rules before using it.
 

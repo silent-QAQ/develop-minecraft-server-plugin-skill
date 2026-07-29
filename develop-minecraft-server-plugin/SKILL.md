@@ -61,7 +61,7 @@ Read [references/platform-and-versions.md](references/platform-and-versions.md) 
 
 Complete one usable path at a time: descriptor and bootstrap, configuration, service/domain logic, command or event entry point, UI/integration, then tests. Register every command, permission, listener, service, task, and dependency consistently. Release tasks, executors, database pools, caches, and hooks during disable.
 
-For GUI or Dialog work, read [references/gui-and-configuration.md](references/gui-and-configuration.md). When a visual layout would improve requirements or operator usability, also read [references/gui-editor.md](references/gui-editor.md) and open the bundled editor. For framework, attribute, economy, permissions, or variables, read [references/dependency-selection.md](references/dependency-selection.md) and [references/plugin-api-handbook.md](references/plugin-api-handbook.md). For DragonCore, GermEngine, PaiUI, or ArcartX, use [references/ui-model-engines.md](references/ui-model-engines.md) only as an on-demand documentation link index; do not load or reproduce the engines' full documentation unless the requested integration needs it.
+For GUI or Dialog work, read [references/gui-and-configuration.md](references/gui-and-configuration.md). When a visual layout would improve requirements or operator usability, also read [references/gui-editor.md](references/gui-editor.md) and open the bundled editor. For framework, attribute, economy, permissions, or variables, read [references/dependency-selection.md](references/dependency-selection.md) and [references/plugin-api-handbook.md](references/plugin-api-handbook.md). For AttributePlus implementation details, search the bundled snapshot through [references/attributeplus-offline-docs.md](references/attributeplus-offline-docs.md) before browsing. For DragonCore, GermEngine, PaiUI, or ArcartX, use [references/ui-model-engines.md](references/ui-model-engines.md) only as an on-demand documentation link index; do not load or reproduce the engines' full documentation unless the requested integration needs it.
 
 ## Enforce Runtime Safety
 
@@ -97,6 +97,7 @@ Report the produced artifact, supported servers, required Java version, dependen
 - YAML, inventory GUI, Dialog: [references/gui-and-configuration.md](references/gui-and-configuration.md)
 - Visual GUI design and AI export: [references/gui-editor.md](references/gui-editor.md)
 - API calls for AttributePlus, Vault, VaultUnlock, PlayerPoints, native values, LuckPerms, and PlaceholderAPI: [references/plugin-api-handbook.md](references/plugin-api-handbook.md)
+- Bundled AttributePlus documentation lookup: [references/attributeplus-offline-docs.md](references/attributeplus-offline-docs.md)
 - On-demand links for DragonCore, GermEngine, PaiUI, and ArcartX: [references/ui-model-engines.md](references/ui-model-engines.md)
 - TabooLib and dependency selection: [references/dependency-selection.md](references/dependency-selection.md)
 - Local Paper/Bukkit API and material lookup: [references/local-api-cache.md](references/local-api-cache.md)

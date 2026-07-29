@@ -49,12 +49,15 @@ Return an explicit unavailable/error result instead of fabricating a zero balanc
 
 Prefer AttributePlus when the request needs custom RPG attributes. AttributePlus distributions and APIs differ across server generations; there is no safe universal method signature to memorize.
 
-1. Inspect the installed AttributePlus JAR, its bundled API, the project's existing dependency, and its plugin version before coding.
-2. Locate public API entry points with `jar tf AttributePlus*.jar` and `javap`, or use sources/Javadocs supplied with that exact release.
-3. Record the verified classes and signatures in the implementation plan.
-4. Wrap reads, temporary modifiers, item parsing, and recalculation behind `AttributeService`.
-5. Use official recalculation/update hooks. Do not edit lore or internal NBT as an API substitute.
-6. Preserve unknown metadata and test login, equipment changes, death, reload, and provider absence.
+1. Search the bundled official-documentation snapshot described in `attributeplus-offline-docs.md`.
+2. Inspect the installed AttributePlus JAR, its bundled API, the project's existing dependency, and its plugin version before coding.
+3. Locate public API entry points with `jar tf AttributePlus*.jar` and `javap`, or use sources/Javadocs supplied with that exact release.
+4. Record the verified classes and signatures in the implementation plan.
+5. Wrap reads, temporary modifiers, item parsing, and recalculation behind `AttributeService`.
+6. Use official recalculation/update hooks. Do not edit lore or internal NBT as an API substitute.
+7. Preserve unknown metadata and test login, equipment changes, death, reload, and provider absence.
+
+Official documentation: <https://plugin.hhhhhy.kim/docs/attributeplus>.
 
 Never copy an AttributePlus signature from a different major release merely because the class name looks similar.
 
