@@ -1,0 +1,9 @@
+﻿{
+    "target":  "paper-26.2",
+    "group":  "io.papermc.paper",
+    "artifact":  "paper-api",
+    "requestedVersion":  "26.2.build.87-stable",
+    "resolvedVersion":  "26.2.build.87-stable",
+    "sourceUrl":  "https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/26.2.build.87-stable/paper-api-26.2.build.87-stable-sources.jar",
+    "fetchedAtUtc":  "2026-07-29T07:02:32.0832966Z"
+}

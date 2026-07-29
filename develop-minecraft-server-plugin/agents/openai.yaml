@@ -1,0 +1,4 @@
+interface:
+  display_name: "Minecraft 插件全自动开发"
+  short_description: "规划、开发并验证 Paper、Folia 多版本插件"
+  default_prompt: "使用 $develop-minecraft-server-plugin 规划、开发并完整验证一个 Minecraft 服务端插件。"

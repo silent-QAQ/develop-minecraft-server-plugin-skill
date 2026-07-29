@@ -1,0 +1,9 @@
+﻿{
+    "target":  "paper-1.21.1",
+    "group":  "io.papermc.paper",
+    "artifact":  "paper-api",
+    "requestedVersion":  "1.21.1-R0.1-SNAPSHOT",
+    "resolvedVersion":  "1.21.1-R0.1-20250328.161643-128",
+    "sourceUrl":  "https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/1.21.1-R0.1-SNAPSHOT/paper-api-1.21.1-R0.1-20250328.161643-128-sources.jar",
+    "fetchedAtUtc":  "2026-07-29T07:02:36.3467666Z"
+}

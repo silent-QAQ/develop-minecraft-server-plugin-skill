@@ -1,0 +1,9 @@
+﻿{
+    "target":  "spigot-1.12.2",
+    "group":  "org.spigotmc",
+    "artifact":  "spigot-api",
+    "requestedVersion":  "1.12.2-R0.1-SNAPSHOT",
+    "resolvedVersion":  "1.12.2-R0.1-20180712.012057-156",
+    "sourceUrl":  "https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/spigotmc/spigot-api/1.12.2-R0.1-SNAPSHOT/spigot-api-1.12.2-R0.1-20180712.012057-156-sources.jar",
+    "fetchedAtUtc":  "2026-07-29T07:02:42.4511974Z"
+}
