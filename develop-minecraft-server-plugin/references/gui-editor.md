@@ -8,15 +8,16 @@ Open `assets/gui-editor/index.html` in a browser. It is a static application and
 
 ## Capabilities
 
-- Search and browse 1,537 item keys generated from the bundled Paper 26.2 registry.
+- Search and browse 1,537 item keys generated from the bundled Paper 26.2 registry with fully bundled release textures.
+- Use the Common category for glass panes, arrows, barriers, structure blocks, wool, item frames, emeralds, and other frequent items; right-click any library item to add or remove a personal favorite.
 - Drag items into slots or select a slot and click an item.
-- Switch between a 6x9 chest and a 3x9 chest plus 3x9 inventory plus 9-slot hotbar.
+- Switch between a 6x9 or 3x9 chest; both layouts include the player's 3x9 inventory and 9-slot hotbar.
 - Move or swap configured items between slots.
 - Edit material name, amount, custom model data, role, development note, Lore, glint, unbreakable state, enchantments, attributes, and extra NBT/PDC JSON.
 - Undo, redo, clear, and retain drafts in browser local storage.
 - Export Chinese YAML, JSON, or a ready-to-submit Codex prompt.
 
-The icon renderer loads Minecraft 26.2 item/block textures from `assets.mcasset.cloud` and falls back to a text tile when a texture is unavailable. Editing and export continue to work if icons cannot be loaded.
+The editor bundles Minecraft 26.2 textures imported from a local release. Item icons use the generated model map. Blocks prefer `textures/block/{id}.png`, then `textures/block/{id}_side.png`, and finally the first texture referenced by the release model definition. `air` intentionally has no visible texture.
 
 ## AI Handoff
 
@@ -41,3 +42,11 @@ scripts/generate-gui-item-library.ps1
 ```
 
 The generator reads `ItemTypeKeys.java` from the bundled Paper 26.2 source snapshot and replaces `assets/gui-editor/items.js`. Review the editor against new or removed items after regeneration.
+
+To replace the bundled textures from an extracted Minecraft release, run:
+
+```powershell
+scripts/import-gui-textures.ps1 "D:\path\to\assets\minecraft"
+```
+
+This copies the complete `textures/item` and `textures/block` directories and rebuilds `icon-map.js` from the release's item/model definitions.

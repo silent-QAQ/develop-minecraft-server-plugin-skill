@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Minecraft GUI 配置编辑器</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <header class="app-header">
@@ -33,7 +33,7 @@
       </label>
       <div class="category-tabs" id="categoryTabs" role="tablist" aria-label="物品分类"></div>
       <div class="item-grid" id="itemGrid" aria-live="polite"></div>
-      <div class="library-footer"><span>拖入槽位，或先选槽位再点击物品</span><kbd>Del</kbd><span>删除</span></div>
+      <div class="library-footer"><span>拖入槽位 · 右键收藏</span><kbd>Del</kbd><span>删除</span></div>
     </aside>
 
     <section class="canvas-panel">
@@ -44,7 +44,7 @@
         </div>
         <div class="segmented" role="group" aria-label="界面布局">
           <button data-layout="chest54" class="active">6×9 箱子</button>
-          <button data-layout="player">箱子 + 背包</button>
+          <button data-layout="player">3×9 箱子</button>
         </div>
       </div>
 
@@ -53,7 +53,7 @@
           <div class="minecraft-window">
             <div class="window-label" id="containerLabel">大型箱子 · 54 槽</div>
             <div id="containerGrid" class="slot-grid cols-9" aria-label="GUI 槽位"></div>
-            <div id="playerArea" class="player-area hidden">
+            <div id="playerArea" class="player-area">
               <div class="window-label sub-label">玩家物品栏</div>
               <div id="inventoryGrid" class="slot-grid cols-9"></div>
               <div id="hotbarGrid" class="slot-grid cols-9 hotbar"></div>
@@ -118,7 +118,8 @@
 
   <div id="toast" class="toast" role="status"></div>
   <script src="items.js?v=1"></script>
+  <script src="icon-map.js?v=1"></script>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <script src="app.js?v=1"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

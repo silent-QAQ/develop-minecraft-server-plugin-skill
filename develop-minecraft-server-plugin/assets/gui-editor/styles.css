@@ -61,8 +61,10 @@ h1, h2 { margin: 0; font-size: 17px; line-height: 1.2; letter-spacing: 0; }
 .item-grid { flex: 1; min-height: 0; overflow-x: hidden; overflow-y: auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-content: start; gap: 5px; padding: 2px 14px 12px; }
 .item-tile { aspect-ratio: 1; min-width: 0; padding: 5px; position: relative; border: 1px solid #394147; border-radius: 4px; background: #242a2e; cursor: grab; }
 .item-tile:hover { border-color: var(--accent); background: #2b3434; }
+.item-tile.favorite { border-color: #6f623d; }
 .item-tile img { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
 .item-tile .fallback-letter { position: absolute; inset: 0; display: grid; place-items: center; color: #bdc7cc; font: 700 12px Consolas, monospace; }
+.favorite-mark { position: absolute; right: 2px; top: 1px; z-index: 2; color: var(--amber); font-size: 10px; line-height: 1; text-shadow: 0 1px #111; pointer-events: none; }
 .library-footer { height: 38px; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 0 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
 kbd { padding: 1px 4px; border: 1px solid #566168; border-bottom-width: 2px; border-radius: 3px; background: #242a2e; color: #c8d0d4; font: 9px Consolas, monospace; }
 .canvas-panel { min-width: 0; min-height: 0; display: flex; flex-direction: column; background: #0e1113; }

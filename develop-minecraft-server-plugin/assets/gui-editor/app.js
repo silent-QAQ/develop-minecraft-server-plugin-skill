@@ -3,9 +3,9 @@
 
   const VERSION = "26.2";
   const STORAGE_KEY = "mc-gui-editor-v1";
-  const ICON_ROOT = `https://assets.mcasset.cloud/${VERSION}/assets/minecraft/textures`;
+  const FAVORITES_KEY = "mc-gui-editor-favorites-v1";
   const categories = [
-    ["all", "全部"], ["building", "建筑"], ["combat", "战斗"], ["tools", "工具"],
+    ["all", "全部"], ["common", "常用"], ["building", "建筑"], ["combat", "战斗"], ["tools", "工具"],
     ["food", "食物"], ["redstone", "红石"], ["spawn", "生物"], ["misc", "其他"]
   ];
 
@@ -20,6 +20,7 @@
   let undoStack = [];
   let redoStack = [];
   let activeCategory = "all";
+  let favorites = loadFavorites();
   let exportFormat = "yaml";
   let dragData = null;
   let formSnapshot = null;
@@ -45,6 +46,11 @@
     } catch (_) {
       return defaultState();
     }
+  }
+
+  function loadFavorites() {
+    try { return new Set(JSON.parse(localStorage.getItem(FAVORITES_KEY)) || []); }
+    catch (_) { return new Set(); }
   }
 
   const cloneState = () => JSON.parse(JSON.stringify(state));
@@ -102,26 +108,28 @@
     return "misc";
   }
 
-  function iconUrl(id, type = "item") { return `${ICON_ROOT}/${type}/${id}.png`; }
+  function isDefaultCommon(id) {
+    return /(^|_)(stained_)?glass_pane$/.test(id) || /^(arrow|spectral_arrow|tipped_arrow)$/.test(id) ||
+      /^(barrier|structure_block|item_frame|glow_item_frame|emerald|emerald_block)$/.test(id) || /_wool$/.test(id) ||
+      /^(chest|ender_chest|hopper|nether_star|paper|book|player_head|clock|compass|redstone|experience_bottle)$/.test(id);
+  }
+
+  function isCommon(id) { return isDefaultCommon(id) || favorites.has(id); }
 
   function createIcon(id, alt = "") {
     const img = document.createElement("img");
-    img.src = iconUrl(id);
     img.alt = alt;
     img.draggable = false;
-    img.dataset.fallback = "item";
+    const mapped = window.MC_ICON_MAP?.[id];
+    if (mapped) img.src = mapped;
     img.addEventListener("error", () => {
-      if (img.dataset.fallback === "item") {
-        img.dataset.fallback = "block";
-        img.src = iconUrl(id, "block");
-      } else {
-        img.style.display = "none";
-        const letter = document.createElement("span");
-        letter.className = "fallback-letter";
-        letter.textContent = id.slice(0, 2).toUpperCase();
-        img.parentElement?.append(letter);
-      }
+      img.style.display = "none";
+      const letter = document.createElement("span");
+      letter.className = "fallback-letter";
+      letter.textContent = id === "air" ? "∅" : id.slice(0, 2).toUpperCase();
+      if (!img.parentElement?.querySelector(".fallback-letter")) img.parentElement?.append(letter);
     });
+    if (!mapped) queueMicrotask(() => img.dispatchEvent(new Event("error")));
     return img;
   }
 
@@ -140,21 +148,35 @@
   function renderLibrary() {
     const query = elements.search.value.trim().toLowerCase().replace(/^minecraft:/, "");
     const all = Array.isArray(window.MC_ITEMS) ? window.MC_ITEMS : [];
-    const filtered = all.filter(id => (!query || id.includes(query)) && (activeCategory === "all" || categoryOf(id) === activeCategory));
+    const filtered = all.filter(id => (!query || id.includes(query)) &&
+      (activeCategory === "all" || (activeCategory === "common" ? isCommon(id) : categoryOf(id) === activeCategory)));
     elements.itemCount.textContent = filtered.length > 240 ? `${filtered.length} / 240` : String(filtered.length);
     const fragment = document.createDocumentFragment();
     filtered.slice(0, 240).forEach(id => {
       const tile = document.createElement("button");
+      const builtInCommon = isDefaultCommon(id);
       tile.className = "item-tile";
-      tile.title = `minecraft:${id}`;
+      tile.classList.toggle("favorite", favorites.has(id));
+      tile.title = builtInCommon ? `minecraft:${id} · 内置常用物品` : `minecraft:${id} · 右键${favorites.has(id) ? "取消收藏" : "加入常用"}`;
       tile.draggable = true;
       tile.append(createIcon(id, id));
+      if (favorites.has(id)) {
+        const mark = document.createElement("span"); mark.className = "favorite-mark"; mark.textContent = "★"; tile.append(mark);
+      }
       tile.addEventListener("dragstart", event => {
         dragData = { type: "material", material: id };
         event.dataTransfer.setData("text/plain", `material:${id}`);
         event.dataTransfer.effectAllowed = "copy";
       });
       tile.addEventListener("click", () => placeMaterial(id));
+      tile.addEventListener("contextmenu", event => {
+        event.preventDefault();
+        if (builtInCommon) { showToast(`${id} 是内置常用物品`); return; }
+        if (favorites.has(id)) { favorites.delete(id); showToast(`已取消收藏 ${id}`); }
+        else { favorites.add(id); showToast(`已加入常用 ${id}`); }
+        localStorage.setItem(FAVORITES_KEY, JSON.stringify([...favorites].sort()));
+        renderLibrary();
+      });
       fragment.append(tile);
     });
     elements.itemGrid.replaceChildren(fragment);
@@ -164,10 +186,8 @@
     const result = [];
     const containerSize = state.layout === "chest54" ? 54 : 27;
     for (let i = 0; i < containerSize; i++) result.push(`container:${i}`);
-    if (state.layout === "player") {
-      for (let i = 0; i < 27; i++) result.push(`inventory:${i}`);
-      for (let i = 0; i < 9; i++) result.push(`hotbar:${i}`);
-    }
+    for (let i = 0; i < 27; i++) result.push(`inventory:${i}`);
+    for (let i = 0; i < 9; i++) result.push(`hotbar:${i}`);
     return result;
   }
 
@@ -244,8 +264,9 @@
   function renderBoard() {
     const player = state.layout === "player";
     fillGrid(elements.containerGrid, "container", player ? 27 : 54);
-    elements.playerArea.classList.toggle("hidden", !player);
-    if (player) { fillGrid(elements.inventoryGrid, "inventory", 27); fillGrid(elements.hotbarGrid, "hotbar", 9); }
+    elements.playerArea.classList.remove("hidden");
+    fillGrid(elements.inventoryGrid, "inventory", 27);
+    fillGrid(elements.hotbarGrid, "hotbar", 9);
     elements.containerLabel.textContent = player ? "箱子 · 27 槽" : "大型箱子 · 54 槽";
     document.querySelectorAll("[data-layout]").forEach(button => button.classList.toggle("active", button.dataset.layout === state.layout));
     const active = activeSlotKeys();
@@ -306,7 +327,7 @@
       };
       Object.keys(slots[key]).forEach(field => slots[key][field] === undefined && delete slots[key][field]);
     });
-    return { 配置版本: 1, Minecraft版本: VERSION, 界面标题: state.title, 布局类型: state.layout === "chest54" ? "6x9箱子" : "3x9箱子+3x9背包+9物品栏", 槽位: slots };
+    return { 配置版本: 1, Minecraft版本: VERSION, 界面标题: state.title, 布局类型: state.layout === "chest54" ? "6x9箱子+3x9背包+9物品栏" : "3x9箱子+3x9背包+9物品栏", 槽位: slots };
   }
 
   function toYaml(data) {
